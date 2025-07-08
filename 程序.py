@@ -157,10 +157,14 @@ if predict_button:
         #     ax2.set_title('Top 10 Important Features')
         #     st.pyplot(fig2)
         st.subheader("SHAP图")
-        data = pd.read_excel('data.xlsx')
-        shap_values = shap.TreeExplainer(model).shap_values(data.iloc[:, 1:])
-        shap.summary_plot(shap_values, data.iloc[:, 1:], plot_type="bar", show=False)
-        st.pyplot()
+        #读取shap_特征重要度.png以及shap.png两张图片进行展示
+        shap_1 = Image.open('shap_特征重要度.png')
+        shap_2 = Image.open('shap.png')
+        col1, col2 = st.columns(2)
+        with col1:
+            st.image(shap_1, caption='特征重要度')
+        with col2:
+            st.image(shap_2, caption='预测结果')
 
 
         
