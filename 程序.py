@@ -4,7 +4,6 @@ import joblib
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-
 # 页面基本配置
 st.set_page_config(
     page_title="RFC 演示", 
@@ -90,6 +89,9 @@ if predict_button:
         prediction = model.predict(features)[0]
         probabilities = model.predict_proba(features)[0]
         
+        #中文字体
+        plt.rcParams['font.sans-serif'] = ['SimHei']
+        plt.rcParams['axes.unicode_minus'] = False
         # 获取类别标签（假设为0和1）
         class_labels = model.classes_
         
