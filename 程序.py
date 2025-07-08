@@ -10,7 +10,7 @@ st.title("随机森林分类器 演示")
 
 # 1. 加载模型
 @st.cache(allow_output_mutation=True)
-def load_model(path="rfc_model.joblib"):
+def load_model(path="rfc.joblib"):
     return joblib.load(path)
 
 model = load_model()
