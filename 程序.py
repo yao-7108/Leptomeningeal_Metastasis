@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 # 页面基本配置
 st.set_page_config(
-    page_title="RFC 演示", 
+    page_title="Leptomeningeal Metastasis", 
     layout="centered",
     page_icon="🌲"
 )
@@ -97,17 +97,18 @@ if predict_button:
         class_labels = model.classes_
         
         # 结果卡片布局
-        col1, col2 = st.columns(2)
+        col1, col2= st.columns(2)
         
         with col1:
-            st.metric("预测类别", f"类别 {prediction}", delta="预测结果")
+            result = '患病' if prediction == 1 else '未患病'
+            st.metric("预测结果", result)
             
         with col2:
             max_prob = max(probabilities)
-            st.metric("最高概率", f"{max_prob:.2%}", delta="置信度")
+            st.metric("预测概率", f"{max_prob:.2%}")
         
         # 概率分布可视化
-        st.subheader("类别概率分布")
+        st.subheader("概率分布")
         proba_df = pd.DataFrame({
             '类别': class_labels,
             '概率': probabilities
@@ -116,6 +117,7 @@ if predict_button:
         # 创建柱状图
         fig, ax = plt.subplots(figsize=(10, 5))
         bars = ax.bar(proba_df['类别'].astype(str), proba_df['概率'], color=['#1f77b4', '#ff7f0e'])
+        ax.set_xticks(['未患病','患病'])
         
         # 添加数据标签
         for bar in bars:
@@ -162,9 +164,9 @@ if predict_button:
         shap_2 = Image.open('shap.png')
         col1, col2 = st.columns(2)
         with col1:
-            st.image(shap_1, caption='特征重要度')
+            st.image(shap_1, caption='SHAP特征重要度')
         with col2:
-            st.image(shap_2, caption='预测结果')
+            st.image(shap_2, caption='SHAP图')
 
 
         
