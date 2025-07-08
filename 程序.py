@@ -4,6 +4,7 @@ import joblib
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import shap
 # 页面基本配置
 st.set_page_config(
     page_title="RFC 演示", 
@@ -127,34 +128,41 @@ if predict_button:
         ax.set_title('Predicted probability for each category')
         st.pyplot(fig)
         
-        # 特征重要性分析（如果模型支持）
-        if hasattr(model, 'feature_importances_'):
-            st.subheader("特征重要性")
+        # # 特征重要性分析（如果模型支持）
+        # if hasattr(model, 'feature_importances_'):
+        #     st.subheader("特征重要性")
             
             # 获取特征名称（根据您的输入顺序）
-            feature_names = [
-                "Gender", "Age", "Smoking", "PFS", "EGFR_ex21_L858R", 
-                "rd_generation_TKIs", "Bevacizumab", "Metastatic_Organs", 
-                "Dizziness", "KPS", "ALB", "GLB", "A/G", "TBIL", "DBIL", "IBIL", 
-                "ALT", "GLU", "K", "Ca", "CO2", "PCA1", "PCA2"
-            ]
+        feature_names = [
+            "Gender", "Age", "Smoking", "PFS", "EGFR_ex21_L858R", 
+            "3rd_generation_TKIs", "Bevacizumab", "Metastatic_Organs", 
+            "Dizziness", "KPS", "ALB", "GLB", "A/G", "TBIL", "DBIL", "IBIL", 
+            "ALT", "GLU", "K", "Ca", "CO2", "PCA1", "PCA2"
+        ]
             
-            # 创建特征重要性数据框
-            importance_df = pd.DataFrame({
-                '特征': feature_names,
-                '重要性': model.feature_importances_
-            }).sort_values('重要性', ascending=False)
+        #     # 创建特征重要性数据框
+        #     importance_df = pd.DataFrame({
+        #         '特征': feature_names,
+        #         '重要性': model.feature_importances_
+        #     }).sort_values('重要性', ascending=False)
             
-            # 只显示前10个重要特征
-            # top_features = importance_df.head(10)
-            top_features = importance_df
+        #     # 只显示前10个重要特征
+        #     # top_features = importance_df.head(10)
+        #     top_features = importance_df
             
-            # 创建水平条形图
-            fig2, ax2 = plt.subplots(figsize=(10, 6))
-            ax2.barh(top_features['特征'][::-1], top_features['重要性'][::-1], color='#2ca02c')
-            ax2.set_xlabel('Importance')
-            ax2.set_title('Top 10 Important Features')
-            st.pyplot(fig2)
+        #     # 创建水平条形图
+        #     fig2, ax2 = plt.subplots(figsize=(10, 6))
+        #     ax2.barh(top_features['特征'][::-1], top_features['重要性'][::-1], color='#2ca02c')
+        #     ax2.set_xlabel('Importance')
+        #     ax2.set_title('Top 10 Important Features')
+        #     st.pyplot(fig2)
+        st.subheader("SHAP图")
+        data = pd.read_excel('data.xlsx')
+        shap_values = shap.TreeExplainer(model).shap_values(data.iloc[:, 1:])
+        shap.summary_plot(shap_values, data.iloc[:, 1:], plot_type="bar", show=False)
+        st.pyplot()
+
+
         
         # 原始特征值展示
         with st.expander("📋 输入特征详情"):
