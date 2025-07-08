@@ -57,7 +57,7 @@ with col1:
 
 with col2:
     GLB = st.sidebar.slider("Glb", 15.4, 47.5, 47.5)
-    AG = st.sidebar.slider("A/G", 0.9, 30.5, 30.5)
+    A/G = st.sidebar.slider("A/G", 0.9, 30.5, 30.5)
     TBIL = st.sidebar.slider("Tbil", 3.1, 36.2, 36.2)
     DBIL = st.sidebar.slider("Dbil", 0.1, 17.2, 17.2)
     IBIL = st.sidebar.slider("Ibil", 1.1, 30.5, 30.5)
