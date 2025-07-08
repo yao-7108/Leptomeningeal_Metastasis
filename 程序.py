@@ -123,8 +123,8 @@ if predict_button:
                     f'{height:.2%}', ha='center', va='bottom')
         
         ax.set_ylim(0, 1)
-        ax.set_ylabel('概率')
-        ax.set_title('各类别预测概率')
+        ax.set_ylabel('prob')
+        ax.set_title('Predicted probability for each category')
         st.pyplot(fig)
         
         # 特征重要性分析（如果模型支持）
@@ -151,8 +151,8 @@ if predict_button:
             # 创建水平条形图
             fig2, ax2 = plt.subplots(figsize=(10, 6))
             ax2.barh(top_features['特征'], top_features['重要性'], color='#2ca02c')
-            ax2.set_xlabel('重要性')
-            ax2.set_title('Top 10 重要特征')
+            ax2.set_xlabel('Importance')
+            ax2.set_title('Top 10 Important Features')
             st.pyplot(fig2)
         
         # 原始特征值展示
