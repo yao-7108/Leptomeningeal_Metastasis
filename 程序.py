@@ -4,7 +4,7 @@ import joblib
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import shap
+from PIL import Image
 # 页面基本配置
 st.set_page_config(
     page_title="RFC 演示", 
