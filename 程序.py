@@ -146,7 +146,8 @@ if predict_button:
             }).sort_values('重要性', ascending=False)
             
             # 只显示前10个重要特征
-            top_features = importance_df.head(10)
+            # top_features = importance_df.head(10)
+            top_features = importance_df
             
             # 创建水平条形图
             fig2, ax2 = plt.subplots(figsize=(10, 6))
