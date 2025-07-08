@@ -117,7 +117,8 @@ if predict_button:
         # 创建柱状图
         fig, ax = plt.subplots(figsize=(10, 5))
         bars = ax.bar(proba_df['类别'].astype(str), proba_df['概率'], color=['#1f77b4', '#ff7f0e'])
-        ax.set_xticks(['未患病','患病'])
+        ax.set_xticks([0,1])
+        ax.set_xticklabels(['未患病', '患病'])
         
         # 添加数据标签
         for bar in bars:
@@ -211,4 +212,4 @@ with st.expander("ℹ️ 使用说明"):
     """)
 
 # 7. 页脚
-st.caption("© 2023 随机森林分类器演示 | 使用Streamlit构建")
+st.caption("© 2025 Leptomeningeal Metastasis Predict \n 原文：Machine Learning for Predicting Leptomeningeal Metastasis and Prognosis in Lung Adenocarcinoma: a multi-center retrospective study Using the \"Prompt\" Model")
