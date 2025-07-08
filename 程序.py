@@ -150,7 +150,7 @@ if predict_button:
             
             # 创建水平条形图
             fig2, ax2 = plt.subplots(figsize=(10, 6))
-            ax2.barh(top_features['特征'], top_features['重要性'], color='#2ca02c')
+            ax2.barh(top_features['特征'][::-1], top_features['重要性'][::-1], color='#2ca02c')
             ax2.set_xlabel('Importance')
             ax2.set_title('Top 10 Important Features')
             st.pyplot(fig2)
