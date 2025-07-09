@@ -13,7 +13,7 @@ st.set_page_config(
     page_icon="🌲"
 )
 
-st.title("Random Forest Classifier Demo")
+st.title("Leptomeningeal Metastasis Prediction Model")
 st.markdown("""
 <style>
 div[data-testid="stSidebar"] {
