@@ -13,7 +13,7 @@ st.set_page_config(
     page_icon="🌲"
 )
 
-st.title("Leptomeningeal Metastasis Prediction Model")
+st.title("Hiqh-Risk Prediction for LUAD Patients with LM'")
 st.markdown("""
 <style>
 div[data-testid="stSidebar"] {
