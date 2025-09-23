@@ -32,7 +32,7 @@ div[data-testid="stSidebar"] {
 
 # 1. Load model
 @st.cache_resource
-def load_model(path="rfc.joblib"):
+def load_model(path="tabpfn.joblib"):
     return joblib.load(path)
 
 model = load_model()
