@@ -5,3 +5,4 @@ numpy>=1.18
 matplotlib>3.0
 shap==0.44.1
 pillow==10.4.0
+tabpfn
