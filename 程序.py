@@ -42,15 +42,14 @@ model = load_model()
 st.sidebar.header("Input Parameters")
 
 # Use column layout for sidebar
-col1 = st.sidebar.columns(1)
+col1 = st.sidebar.columns(1)[0]
 
-with col1:
-    CO2 = st.sidebar.slider("Co2", 2.51, 30.7, 21.75)
-    Ca = st.sidebar.slider("Ca", 0.89, 102.1, 2.02)
-    EGFR_ex21_L858R = st.sidebar.slider("Egfr Ex21 L858R", 0, 1, 0)
-    KPS = st.sidebar.slider("Kps", 60, 90, 72)
-    PFS = st.sidebar.slider("Pfs", 0, 94, 12)
-    IBIL = st.sidebar.slider("Ibil", 1.1, 30.5, 13.11)
+CO2 = col1.slider("Co2", 2.51, 30.7, 21.75)
+Ca = col1.slider("Ca", 0.89, 102.1, 2.02)
+EGFR_ex21_L858R = col1.slider("Egfr Ex21 L858R", 0, 1, 0)
+KPS = col1.slider("Kps", 60, 90, 72)
+PFS = col1.slider("Pfs", 0, 94, 12)
+IBIL = col1.slider("Ibil", 1.1, 30.5, 13.11)
 
 
 
