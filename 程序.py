@@ -5,6 +5,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from PIL import Image
+from tabpfn import TabPFNClassifier
+
 
 # Page configuration
 st.set_page_config(
@@ -32,7 +34,7 @@ div[data-testid="stSidebar"] {
 
 # 1. Load model
 @st.cache_resource
-def load_model(path="rfc.joblib"):
+def load_model(path="tabpfn.joblib"):
     return joblib.load(path)
 
 model = load_model()
