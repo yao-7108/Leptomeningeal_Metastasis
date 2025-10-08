@@ -54,7 +54,7 @@ IBIL = col1.slider("Ibil", 1.1, 30.5, 13.11)
 
 
 # 3. Create feature array with proper feature names
-feature_names = ['PFS', 'EGFR_ex21_L858R', 'KPS', 'IBIL', 'Ca', 'CO2']
+feature_names = ['PFS', 'EGFR ex21 L858R', 'KPS', 'IBIL', 'Ca', 'CO2']
 features = pd.DataFrame([[PFS, EGFR_ex21_L858R, KPS, IBIL, Ca, CO2]], 
                        columns=feature_names)
 
