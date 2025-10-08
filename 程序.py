@@ -53,9 +53,10 @@ IBIL = col1.slider("Ibil", 1.1, 30.5, 13.11)
 
 
 
-# 3. Create feature array
-features = np.array([PFS, EGFR_ex21_L858R, KPS,IBIL,Ca, CO2
-]).reshape(1, -1)
+# 3. Create feature array with proper feature names
+feature_names = ['PFS', 'EGFR_ex21_L858R', 'KPS', 'IBIL', 'Ca', 'CO2']
+features = pd.DataFrame([[PFS, EGFR_ex21_L858R, KPS, IBIL, Ca, CO2]], 
+                       columns=feature_names)
 
 # 4. Prediction button
 predict_button = st.sidebar.button("Run Prediction", use_container_width=True, type="primary")
