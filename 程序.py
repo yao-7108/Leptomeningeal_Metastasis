@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from tabpfn import TabPFNClassifier
 
-
 # Page configuration
 st.set_page_config(
     page_title="Leptomeningeal Metastasis", 
@@ -43,41 +42,20 @@ model = load_model()
 st.sidebar.header("Input Parameters")
 
 # Use column layout for sidebar
-col1, col2 = st.sidebar.columns(2)
+col1 = st.sidebar.columns(1)
 
 with col1:
-    Gender = st.sidebar.slider("Gender", 0, 1, 1)
-    Age = st.sidebar.slider("Age", 31, 95, 57)
-    Smoking = st.sidebar.slider("Smoking", 0, 1, 0)
-    PFS = st.sidebar.slider("Pfs", 0, 94, 12)
-    EGFR_ex21_L858R = st.sidebar.slider("Egfr Ex21 L858R", 0, 1, 0)
-    rd_generation_TKIs = st.sidebar.slider("3Rd-Generation Tkis", 0, 1, 0)
-    Bevacizumab = st.sidebar.slider("Bevacizumab", 0, 1, 0)
-    Metastatic_Organs = st.sidebar.slider("Metastatic Organs", 0, 3, 2)
-    Dizziness = st.sidebar.slider("Dizziness", 0, 1, 0)
-    KPS = st.sidebar.slider("Kps", 60, 90, 72)
-    ALB = st.sidebar.slider("Alb", 3.3, 51.3, 42.72)
-
-with col2:
-    GLB = st.sidebar.slider("Glb", 15.4, 47.5, 24.54)
-    AG = st.sidebar.slider("A/G", 0.9, 30.5, 1.75)
-    TBIL = st.sidebar.slider("Tbil", 3.1, 36.2, 15.46)
-    DBIL = st.sidebar.slider("Dbil", 0.1, 17.2, 2.34)
-    IBIL = st.sidebar.slider("Ibil", 1.1, 30.5, 13.11)
-    ALT = st.sidebar.slider("Alt", 2, 128, 16)
-    GLU = st.sidebar.slider("Glu", 3.06, 277.0, 5.34)
-    K = st.sidebar.slider("K", 2.95, 8.06, 4.18)
-    Ca = st.sidebar.slider("Ca", 0.89, 102.1, 2.02)
     CO2 = st.sidebar.slider("Co2", 2.51, 30.7, 21.75)
-    PCA1 = st.sidebar.slider("Pca1", -103.9169180495229, 773.7879743514883, -18.68)
-    PCA2 = st.sidebar.slider("Pca2", -203.9109840184679, 232.96592983059233, -76.81)
+    Ca = st.sidebar.slider("Ca", 0.89, 102.1, 2.02)
+    EGFR_ex21_L858R = st.sidebar.slider("Egfr Ex21 L858R", 0, 1, 0)
+    KPS = st.sidebar.slider("Kps", 60, 90, 72)
+    PFS = st.sidebar.slider("Pfs", 0, 94, 12)
+    IBIL = st.sidebar.slider("Ibil", 1.1, 30.5, 13.11)
+
+
 
 # 3. Create feature array
-features = np.array([
-    Gender, Age, Smoking, PFS, EGFR_ex21_L858R, 
-    rd_generation_TKIs, Bevacizumab, Metastatic_Organs, 
-    Dizziness, KPS, ALB, GLB, AG, TBIL, DBIL, IBIL, 
-    ALT, GLU, K, Ca, CO2, PCA1, PCA2
+features = np.array([PFS, EGFR_ex21_L858R, KPS,IBIL,Ca, CO2
 ]).reshape(1, -1)
 
 # 4. Prediction button
