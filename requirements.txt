@@ -7,3 +7,4 @@ shap==0.44.1
 pillow==10.4.0
 torch
 pydantic
+python>=3.10
