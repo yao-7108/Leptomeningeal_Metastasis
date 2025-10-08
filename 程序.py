@@ -126,7 +126,7 @@ if predict_button:
             feature_names = ['CO2','Ca','EGFR ex21 L858R','KPS','PFS','IBIL']
             feature_table = pd.DataFrame({
                 'Feature': feature_names,
-                'Value': features[0]
+                'Value': features.iloc[0].values
             })
             st.table(feature_table)
             
@@ -139,21 +139,22 @@ st.divider()
 with st.expander("ℹ️ Instructions"):
     st.markdown("""
     **Model Information:**
-    - Model Type: Random Forest Classifier (RFC)
-    - Input Features: 23
-    - Output Classes: 2
+    - Model Type: TabPFN Classifier
+    - Input Features: 6 clinical parameters
+    - Output Classes: 2 (Non-diseased vs Diseased)
     
     **User Guide:**
     1. Adjust feature parameters in the left sidebar
     2. Click "Run Prediction" button to get results
-    3. View prediction results and feature analysis
+    3. View prediction results and probability distribution
     
     **Feature Explanation:**
-    - **Gender**: Gender (0=Female, 1=Male)
-    - **Smoking**: Smoking history (0=No, 1=Yes)
+    - **PFS**: Progression-Free Survival (months)
+    - **EGFR_ex21_L858R**: EGFR Exon 21 L858R Mutation (0=No, 1=Yes)
     - **KPS**: Karnofsky Performance Status score
-    - **PCA1/PCA2**: Principal Component Analysis results
-    - **Others**: Clinical test indicators
+    - **IBIL**: Indirect Bilirubin level
+    - **Ca**: Calcium level
+    - **CO2**: Carbon Dioxide level
     
     **Notes:**
     - All input features must match the model training format
